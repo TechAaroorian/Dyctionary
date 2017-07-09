@@ -1,0 +1,62 @@
+0	[<s>]	sil
+1	[</s>]	sil
+2	[HELLO]	hh ax l ow
+3	[THIS]	dh ih s
+3	[READY]	r eh dx iy
+4	[IS]	ih z
+4	[LETS]	l eh t s
+5	[COMMAND]	k ax m ae n d
+5	[START]	s t aa r t
+6	[STOP]	s t aa p
+7	[LISTENING]	l ih s ax n ix ng
+8	[A]	ax
+9	[B]	b iy
+10	[C]	s iy
+11	[D]	d iy
+12	[E]	iy
+13	[F]	eh f
+14	[G]	jh iy
+15	[H]	ey ch
+16	[I]	ay
+17	[J]	jh ey
+18	[K]	k ey
+19	[L]	eh l
+20	[M]	ax m
+21	[N]	ax n
+22	[O]	ow
+23	[P]	p iy
+24	[Q]	k y uw
+25	[R]	aa r
+26	[S]	eh s
+27	[T]	t iy
+28	[U]	y uw
+29	[V]	v iy
+30	[W]	d ah b ax l y uw
+31	[X]	eh k s
+32	[Y]	w ay
+33	[Z]	z iy
+34	[ABETTED]	ax b eh dx ix d
+35	[ABNORMAL]	ae b n ao r m ax l
+36	[AFFECT]	ax f eh k t
+37	[AGRICULTURE]	ae g r ix k ah l ch er
+38	[YOU]	y uw
+39	[CAN'T]	k ae n t
+40	[JUDGE]	jh ah jh
+41	[A]	ax
+42	[BOOK]	b uh k
+43	[BY]	b ay
+44	[IT'S]	ih t s
+45	[COVER]	k ah v er
+46	[ABETTED]	ax b eh dx ix d
+46	[INTERVAL]	ih n t er v ax l
+46	[OFFER]	ao f er
+46	[TIME]	t ay m
+47	[WHAT]	w ah t
+47	[DOES]	d ah z
+47	[MEAN]	m iy n
+48	[IS]	ih z
+48	[THE]	dh ax
+48	[MEANING]	m iy n ix ng
+48	[OF]	ah v
+48	[PLEASE]	p l iy z
+49	[TIME]	t ay m

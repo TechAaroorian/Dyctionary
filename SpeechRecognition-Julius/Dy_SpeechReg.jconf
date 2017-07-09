@@ -1,0 +1,14 @@
+#Dyctionary Project Speech Regconition File
+#Julius Speech Recognition Engine
+
+
+-nolog				                     # disable all logs
+-quiet				                     # output less log
+-chunksize 2500
+-input mic    			                     # live microphone
+-v Dy_SpeechReg.dict			                     # word dictionary
+-dfa Dy_SpeechReg.dfa	                                     # specify DFA and dictionary separately
+-h /usr/share/julius-voxforge/acoustic/hmmdefs       # acoustic HMM (ascii or Julius binary)
+-hlist /usr/share/julius-voxforge/acoustic/tiedlist  # HMMList to map logical phone to physical
+
+################################################################# end of file
