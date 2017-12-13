@@ -1,15 +1,26 @@
 #!/usr/bin/env python3
-import subprocess, time, os
 
-julius_start = os.getcwd() + "/SpeechRecognition-Julius/Dy_Open.sh"
 
-startUP = subprocess.Popen(['python3', 'Dy_StartupWindow.py'], shell=False)
+import subprocess
+import time
+import os
 
-subprocess.Popen(['sh', julius_start], shell=False)
 
-Dyctionary = subprocess.Popen(['python3', 'DyctionaryUI.py'], shell=False)
+def main():
+    startjulius = os.path.join(
+        os.getcwd(),
+        "/SpeechRecognition-Julius/Dy_Open.sh")
 
-time.sleep(18)
+    startwindow = subprocess.Popen(
+        ['python3', 'Dy_StartupWindow.py'],
+        shell=False)
 
-startUP.kill()
-#os.system("exit")
+    subprocess.Popen(['sh', startjulius], shell=False)
+    subprocess.Popen(['python3', 'DyctionaryUI.py'], shell=False)
+
+    time.sleep(18)
+    startwindow.kill()
+
+
+if __name__ == '__main__':
+    main()
