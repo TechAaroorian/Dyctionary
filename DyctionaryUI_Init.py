@@ -30,16 +30,6 @@ class Dy_UserInterfaceInit(Gtk.Window):
         self.Dy_ListenReady = False
         self.Dy_SpeechRegInputPre = ""
 
-        # status initialization
-        self.Dy_StatusBottomOneText = [
-            "SpeechRecognition not activated yet",
-            "SpeechRecognition activated", "SpeechRecognition has deactivated"
-        ]
-        self.Dy_StatusBottomTwoText = ["Sleeping", "Listening"]
-        self.Dy_StatusBottomThreeText = [
-            "Normal Mode", "Listening Mode", "Dictionary Mode"
-        ]
-
         self.Dy_UserQueryText = fixdataInit[3]
         self.Dy_ResponseLargeText = fixdataInit[0]
         self.Dy_ResponseSmallText = fixdataInit[1]
@@ -80,7 +70,7 @@ class Dy_UserInterfaceInit(Gtk.Window):
         self.Dy_ResponseLarge.set_selectable(True)
         self.Dy_ResponseLarge.set_line_wrap(True)
         self.Dy_ResponseLarge.set_max_width_chars(115)
-        self.Dy_ResponseLarge.set_size_request(640, 480)
+        # self.Dy_ResponseLarge.set_size_request(640, 480)
         self.Dy_ResponseLarge.set_name("Dy_ResponseLarge")
 
         self.Dy_MainWindowTitle = Gtk.Label()
@@ -95,12 +85,6 @@ class Dy_UserInterfaceInit(Gtk.Window):
         self.Dy_ResponseSmall.set_size_request(300, 100)
         self.Dy_ResponseSmall.set_name("Dy_ResponseSmall")
 
-        self.Dy_MainImage = Gtk.Image()
-        self.Dy_MainImage.set_from_file(self.Dy_IconDir + "Sm1.png")
-        self.Dy_MainImage.set_size_request(300, 300)
-        self.Dy_MainImage.set_tooltip_text("Visual")
-        self.Dy_MainImage.set_name("Dy_MainImage")
-
         self.Dy_UserEntry = Gtk.Entry()
         self.Dy_UserEntry.set_size_request(640, 30)
         self.Dy_UserEntry.set_inner_border(None)
@@ -110,28 +94,6 @@ class Dy_UserInterfaceInit(Gtk.Window):
 
         self.Dy_DummyStart = Gtk.Label()
         self.Dy_DummyEnd = Gtk.Label()
-
-        self.Dy_SwitchOffButton = Gtk.Button()
-        self.Dy_SwitchOffButton.set_name("Dy_Buttons")
-        self.Dy_SwitchOffButton.set_relief(2)
-        self.Dy_SwitchOffButtonI = Gtk.Image()
-        self.Dy_SwitchOffButtonI.set_from_file(self.Dy_IconDir +
-                                               "Switch_off_35.png")
-        self.Dy_SwitchOffButton.set_image(self.Dy_SwitchOffButtonI)
-        self.Dy_SwitchOffButton.connect("clicked", self.Dy_CloseAll)
-        self.Dy_SwitchOffButton.set_tooltip_text("Close Dyctionary")
-        self.Dy_SwitchOffButton.set_size_request(20, 20)
-
-        self.Dy_ListenButton = Gtk.Button()
-        self.Dy_ListenButton.set_name("Dy_Buttons")
-        self.Dy_ListenButton.set_relief(2)
-        self.Dy_ListenButtonI = Gtk.Image()
-        self.Dy_ListenButtonI.set_from_file(self.Dy_IconDir +
-                                            "Listen_Icon_35.png")
-        self.Dy_ListenButton.set_image(self.Dy_ListenButtonI)
-        self.Dy_ListenButton.connect("clicked", self.Dy_ListenFunction)
-        self.Dy_ListenButton.set_tooltip_text("Activate Microphone")
-        self.Dy_ListenButton.set_size_request(35, 35)
 
         self.Dy_SearchButton = Gtk.Button()
         self.Dy_SearchButton.set_name("Dy_Buttons")
@@ -176,60 +138,23 @@ class Dy_UserInterfaceInit(Gtk.Window):
         self.Dy_SpeakMButton.set_size_request(35, 35)
         self.Dy_SpeakMButton.connect("clicked", self.Dy_SpeakLoud, 'S')
 
-        self.Dy_Sperator = Gtk.Label()
-        self.Dy_Sperator.set_name("Dy_Sperator")
-        self.Dy_Sperator.set_size_request(854, 10)
-
-        self.Dy_Spinner = Gtk.Spinner()
-        self.Dy_Spinner.set_name("Dy_Spinner")
-
-        self.Dy_StatusBottomOne = Gtk.Label()
-        self.Dy_StatusBottomOne.set_label(self.Dy_StatusBottomOneText[0])
-        self.Dy_StatusBottomOne.set_name("Dy_StatusBottom")
-
-        self.Dy_StatusBottomTwo = Gtk.Label()
-        self.Dy_StatusBottomTwo.set_label(self.Dy_StatusBottomTwoText[0])
-        self.Dy_StatusBottomTwo.set_name("Dy_StatusBottom")
-
-        self.Dy_StatusBottomThree = Gtk.Label()
-        self.Dy_StatusBottomThree.set_label(self.Dy_StatusBottomThreeText[0])
-        self.Dy_StatusBottomThree.set_name("Dy_StatusBottom")
-
-        self.Dy_SpinnerSpeak = Gtk.Spinner()
-        self.Dy_SpinnerSpeak.set_name("Dy_Spinner")
-        self.Dy_SpinnerSpeak.start()
-
         self.Dy_HButtonBoxOne.pack_start(self.Dy_DummyStart, True, True, 0)
-        self.Dy_HButtonBoxOne.pack_start(self.Dy_ListenButton, True, True, 0)
         self.Dy_HButtonBoxOne.pack_start(self.Dy_SearchButton, True, True, 0)
         self.Dy_HButtonBoxOne.pack_start(self.Dy_MoreButton, True, True, 0)
         self.Dy_HButtonBoxOne.pack_start(self.Dy_SpeakLButton, True, True, 0)
         self.Dy_HButtonBoxOne.pack_start(self.Dy_SpeakMButton, True, True, 0)
         self.Dy_HButtonBoxOne.pack_start(self.Dy_DummyEnd, True, True, 0)
 
-        self.Dy_VBoxOne.pack_start(self.Dy_ResponseSmall, False, True, 0)
-        self.Dy_VBoxOne.pack_start(self.Dy_MainImage, True, True, 0)
-
         self.Dy_HBoxTwo.pack_start(self.Dy_ResponseLarge, True, True, 0)
         self.Dy_HBoxTwo.pack_start(self.Dy_VBoxOne, True, True, 0)
 
-        self.Dy_HBoxOne.pack_start(self.Dy_Spinner, True, True, 0)
-        self.Dy_HBoxOne.pack_start(self.Dy_StatusBottomOne, True, True, 0)
-        self.Dy_HBoxOne.pack_start(self.Dy_StatusBottomTwo, True, True, 0)
-        self.Dy_HBoxOne.pack_start(self.Dy_StatusBottomThree, True, True, 0)
-        self.Dy_HBoxOne.pack_start(self.Dy_SpinnerSpeak, True, True, 0)
-        self.Dy_HBoxOne.set_size_request(854, 20)
-
-        self.Dy_HBoxThree.pack_start(self.Dy_SwitchOffButton, False, False, 0)
         self.Dy_HBoxThree.pack_start(self.Dy_UserQuery, True, True, 0)
-        self.Dy_HBoxThree.pack_start(self.Dy_TopLabelDummy, True, True, 0)
+        self.Dy_HBoxThree.pack_start(self.Dy_ResponseSmall, True, True, 0)
 
         self.Dy_VBoxTwo.pack_start(self.Dy_HBoxThree, True, True, 0)
         self.Dy_VBoxTwo.pack_start(self.Dy_HBoxTwo, True, True, 0)
         self.Dy_VBoxTwo.pack_start(self.Dy_UserEntry, True, True, 0)
         self.Dy_VBoxTwo.pack_start(self.Dy_HButtonBoxOne, True, True, 0)
-        self.Dy_VBoxTwo.pack_start(self.Dy_Sperator, True, True, 0)
-        self.Dy_VBoxTwo.pack_start(self.Dy_HBoxOne, True, True, 0)
 
-        self.Dy_ScrollWindow.add_with_viewport(self.Dy_VBoxTwo)
+        # self.Dy_ScrollWindow.add_with_viewport(self.Dy_VBoxTwo)
         self.set_focus(self.Dy_UserEntry)

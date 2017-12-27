@@ -7,6 +7,7 @@ from Dyctionary_Modules.DyctionaryRamdomGenerator import DyRandomGenerator
 from Dyctionary_Modules.Dy_WordNetAccess import wordnetAccess
 from Dyctionary_Modules.Dy_CurrentDayEssentials import currentDayEssentials
 
+
 class DyMagnetizer:
     def __init__(self):
         self.DyWAObject = wordnetAccess()
@@ -18,17 +19,17 @@ class DyMagnetizer:
         self.DyRandomObj = DyRandomGenerator()
         self.iterCheck = 0
         self.wordPosition = None
-        
+
     def DyMangnetizerEvaluate(self, getString):
         self.sendResult = []
         self.iterCheck = 0
         self.queryString = getString
         self.splitValue = self.queryString.split(' ')
-        
+
         if len(self.splitValue) == 1:
             self.sendResult = self.DyWAObject.nltkAccess(self.queryString)
             return self.sendResult
-        
+
         if self.queryString in self.firstCheck:
             if self.DyChat[self.queryString] == 'call time module':
                 self.resultList = self.getresultTime()
@@ -49,7 +50,7 @@ class DyMagnetizer:
                 self.resultList = self.DyChat[self.queryString][level]
                 subprocess.Popen(['espeak',  '-s', '145', '-v', 'f5', self.resultList])
                 return [self.resultList], None
-                
+
         else:
             try:
                 raiseException = True
@@ -60,33 +61,32 @@ class DyMagnetizer:
                                 self.iterCheck = self.iterCheck + 1
                             else:
                                 self.wordPosition = currentPosition
-                                
-                        
+
                     if self.iterCheck == (len(self.splitValue) - 1):
                         raiseException = False
                         self.sendResult, checkExist = self.DyWAObject.nltkAccess(self.splitValue[self.wordPosition])
                         return self.sendResult, checkExist
-                    
+
                 if raiseException:
                     raise Exception
-                    
+
             except Exception as e:
                 subprocess.Popen(['espeak', '-v', 'f5', '-s', '145', "Sorry.. I cannot understand"])
                 print(e)
                 return ['Sorry.. I cannot understand'], False
-                    
+
     def getresultTime(self):
         subprocess.Popen(['killall', 'espeak'], shell=False)
         subprocess.Popen(['espeak', '-v', 'f5', self.DycdeObject.getTimeEssentials()[1]], shell=False)
         return self.DycdeObject.getTimeEssentials()[0]
-    
+
     def getresultMMN(self):
         currentTime = self.DycdeObject.getTimeEssentials()[4]
         checkStatus = ''
         attach = ''
         position = random.randint(0, 3)
         returnReslt = ''
-        
+
         if currentTime < 12:
             checkStatus = 'good morning'
             returnReslt = self.Dyobject.goodMorning[position]
@@ -103,19 +103,14 @@ class DyMagnetizer:
             checkStatus = 'good night'
             returnReslt = self.Dyobject.goodNight[position]
             attach = 'night'
-            
+
         if self.queryString == checkStatus:
             return returnReslt
         else:
-            position =random.randint(0, 3)
+            position = random.randint(0, 3)
             randomResponse = ('This seems ' + attach,
                               "It is not " + self.queryString.split(" ")[1] + ". It is " + attach,
                               "Are you kidding me.. It is not " + self.queryString.split(" ")[1],
                               "Are you joking.. It is " + attach)
-                            
-            return randomResponse[position]
-        
-            
-        
 
-        
+            return randomResponse[position]

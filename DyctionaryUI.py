@@ -12,8 +12,7 @@ class Dy_UserInterface(Dy_UserInterfaceInit):
     def __init__(self, ):
         Dy_UserInterfaceInit.__init__(self)
 
-        self.Dy_UserEntryAnalyzerObject = Dy_UserEntryAnalyzer.Dy_UserEntryAnalyzer(
-        )
+        self.Dy_UserEntryAnalyzerObject = Dy_UserEntryAnalyzer.Dy_UserEntryAnalyzer()
 
         self.Dy_MainCss = DyctionaryCSS.DyctionaryCSS
         self.Dy_StyleProvider = Gtk.CssProvider()
@@ -22,7 +21,8 @@ class Dy_UserInterface(Dy_UserInterfaceInit):
             Gdk.Screen.get_default(), self.Dy_StyleProvider,
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
-        self.add(self.Dy_ScrollWindow)
+        # self.add(self.Dy_ScrollWindow)
+        self.add(self.Dy_VBoxTwo)
 
         self.Dy_MakeIntroThread = threading.Thread(target=self.Dy_MakeIntro)
         self.Dy_MakeIntroThread.start()
@@ -132,7 +132,6 @@ class Dy_UserInterface(Dy_UserInterfaceInit):
         Dy_FinalLongTextResponse = self.Dy_UserEntryAnalyzerObject.Dy_ResponseInstant(
             Dy_TextEntryData.strip())
         self.Dy_UserQuery.set_label(Dy_FinalLongTextResponse)
-        self.Dy_MainImage.set_from_file(self.Dy_IconDir + "Sm3.png")
 
     def Dy_TextEntryFinal(self, Dy_UserEntry):
         checkExist = None
@@ -160,11 +159,6 @@ class Dy_UserInterface(Dy_UserInterfaceInit):
             self.Dy_ResponseLargeSpeech = fixList[2]
             self.Dy_UserQueryText = fixList[3]
             self.Dy_ResponseSmallSpeech = fixList[3]
-
-            if self.Dy_UserQueryText == 'No Source Found':
-                self.Dy_MainImage.set_from_file(self.Dy_IconDir + "Sm2.png")
-            else:
-                self.Dy_MainImage.set_from_file(self.Dy_IconDir + "Sm1.png")
 
             self.Dy_ResponseLarge.set_markup(self.Dy_ResponseLargeText)
             self.Dy_ResponseSmall.set_label(self.Dy_ResponseSmallText)
