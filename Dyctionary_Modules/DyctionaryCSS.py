@@ -63,4 +63,12 @@ DyctionaryCSS = b"""
     #Dy_Spinner{
         color: blue
     }
+
+    #separatortopred {
+        background: orange;
+        background-size: 10px;
+    }
+    #bottomlabel {
+        background: blue;
+    }
 """

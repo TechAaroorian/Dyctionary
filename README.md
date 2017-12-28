@@ -1,4 +1,6 @@
 # Dyctionary
-A english dictionary with speech recognition.
+A simple english dictionary.
 
-install enchant, nltk, espeak
+install enchant
+install nltk
+install espeak
