@@ -5,7 +5,7 @@ import os, subprocess
 import time
 
 
-class Dy_UserInterfaceInit(Gtk.Window):
+class UserInterfaceInit(Gtk.Window):
     def __init__(self, ):
         Gtk.Window.__init__(self, title="Dyctionary")
 
@@ -35,10 +35,11 @@ class Dy_UserInterfaceInit(Gtk.Window):
         self.Dy_ResponseSmallText = fixdataInit[1]
         self.Dy_ResponseLargeSpeech = fixdataInit[2]
         self.Dy_ResponseSmallSpeech = fixdataInit[3]
-        self.Dy_IconDir = os.getcwd() + "/Icons/"
-        self.Dy_SpeechRegPath = os.getcwd() + "/SpeechRecognition-Julius/"
+        self.Dy_IconDir = os.path.join(os.getcwd(), 'Icons')
+        self.Dy_SpeechRegPath = os.path.join(
+            os.getcwd(), 'SpeechRecognition-Julius')
 
-        self.set_icon_from_file(self.Dy_IconDir + "DyLogo.png")
+        self.set_icon_from_file(os.path.join(self.Dy_IconDir, "DyLogo.png"))
         self.set_default_size(1024, 720)
         self.set_size_request(400, 400)
         self.set_border_width(10)
@@ -56,6 +57,16 @@ class Dy_UserInterfaceInit(Gtk.Window):
         self.Dy_HBoxThree = Gtk.HButtonBox()
 
         self.Dy_TopLabelDummy = Gtk.Label()
+
+        self.separator_top_red = Gtk.HSeparator()
+        self.separator_top_red.set_name('separatortopred')
+
+        self.separator_top = Gtk.Label()
+        self.separator_bottom_icon_top = Gtk.Label()
+        self.separator_bottom_icon_bottom = Gtk.Label()
+
+        self.bottom_label = Gtk.Label()
+        self.bottom_label.set_name('bottomlabel')
 
         self.Dy_UserQuery = Gtk.Label()
         self.Dy_UserQuery.set_label(self.Dy_UserQueryText)
@@ -99,8 +110,8 @@ class Dy_UserInterfaceInit(Gtk.Window):
         self.Dy_SearchButton.set_name("Dy_Buttons")
         self.Dy_SearchButton.set_relief(2)
         self.Dy_SearchButtonI = Gtk.Image()
-        self.Dy_SearchButtonI.set_from_file(self.Dy_IconDir +
-                                            "Search_Icon_35.png")
+        self.Dy_SearchButtonI.set_from_file(
+            os.path.join(self.Dy_IconDir, "Search_Icon_35.png"))
         self.Dy_SearchButton.set_image(self.Dy_SearchButtonI)
         self.Dy_SearchButton.connect("clicked", self.Dy_TextEntryFinal)
         self.Dy_SearchButton.set_tooltip_text("Find")
@@ -110,7 +121,8 @@ class Dy_UserInterfaceInit(Gtk.Window):
         self.Dy_MoreButton.set_name("Dy_Buttons")
         self.Dy_MoreButton.set_relief(2)
         self.Dy_MoreButtonI = Gtk.Image()
-        self.Dy_MoreButtonI.set_from_file(self.Dy_IconDir + "More_Icon_35.png")
+        self.Dy_MoreButtonI.set_from_file(
+            os.path.join(self.Dy_IconDir, "More_Icon_35.png"))
         self.Dy_MoreButton.set_image(self.Dy_MoreButtonI)
         self.Dy_MoreButton.connect("clicked", self.Dy_callMoreWindow)
         self.Dy_MoreButton.set_tooltip_text("More")
@@ -120,8 +132,8 @@ class Dy_UserInterfaceInit(Gtk.Window):
         self.Dy_SpeakLButton.set_name("Dy_Buttons")
         self.Dy_SpeakLButton.set_relief(2)
         self.Dy_SpeakLButtonI = Gtk.Image()
-        self.Dy_SpeakLButtonI.set_from_file(self.Dy_IconDir +
-                                            "Speak_Icon_35.png")
+        self.Dy_SpeakLButtonI.set_from_file(
+            os.path.join(self.Dy_IconDir, "Speak_Icon_35.png"))
         self.Dy_SpeakLButton.set_image(self.Dy_SpeakLButtonI)
         self.Dy_SpeakLButton.set_tooltip_text("Speak Main")
         self.Dy_SpeakLButton.set_size_request(35, 35)
@@ -131,8 +143,8 @@ class Dy_UserInterfaceInit(Gtk.Window):
         self.Dy_SpeakMButton.set_name("Dy_Buttons")
         self.Dy_SpeakMButton.set_relief(2)
         self.Dy_SpeakMButtonI = Gtk.Image()
-        self.Dy_SpeakMButtonI.set_from_file(self.Dy_IconDir +
-                                            "SpeakM_Icon_35.png")
+        self.Dy_SpeakMButtonI.set_from_file(
+            os.path.join(self.Dy_IconDir, "SpeakM_Icon_35.png"))
         self.Dy_SpeakMButton.set_image(self.Dy_SpeakMButtonI)
         self.Dy_SpeakMButton.set_tooltip_text("Speak Little")
         self.Dy_SpeakMButton.set_size_request(35, 35)
@@ -152,7 +164,11 @@ class Dy_UserInterfaceInit(Gtk.Window):
         self.Dy_HBoxThree.pack_start(self.Dy_ResponseSmall, True, True, 0)
 
         self.Dy_VBoxTwo.pack_start(self.Dy_HBoxThree, True, True, 0)
+        self.Dy_VBoxTwo.pack_start(self.separator_top_red, True, True, 0)
+        self.Dy_VBoxTwo.pack_start(self.separator_top, True, True, 0)
         self.Dy_VBoxTwo.pack_start(self.Dy_HBoxTwo, True, True, 0)
+        self.Dy_VBoxTwo.pack_start(self.separator_bottom_icon_top, True, True, 0)
+        self.Dy_VBoxTwo.pack_start(self.separator_bottom_icon_bottom, True, True, 0)
         self.Dy_VBoxTwo.pack_start(self.Dy_UserEntry, True, True, 0)
         self.Dy_VBoxTwo.pack_start(self.Dy_HButtonBoxOne, True, True, 0)
 

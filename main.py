@@ -2,15 +2,15 @@
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk
-from DyctionaryUI_Init import Dy_UserInterfaceInit
+from uiinit import UserInterfaceInit
 import subprocess, os, threading, time
 import Dyctionary_Modules.DyctionaryCSS as DyctionaryCSS
 import Dyctionary_Modules.Dy_UserEntryAnalyzer as Dy_UserEntryAnalyzer
 
 
-class Dy_UserInterface(Dy_UserInterfaceInit):
+class Dy_UserInterface(UserInterfaceInit):
     def __init__(self, ):
-        Dy_UserInterfaceInit.__init__(self)
+        UserInterfaceInit.__init__(self)
 
         self.Dy_UserEntryAnalyzerObject = Dy_UserEntryAnalyzer.Dy_UserEntryAnalyzer()
 
