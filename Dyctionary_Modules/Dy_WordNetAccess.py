@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
+import string
 import Dyctionary_Modules.AllPhoneme as AllPhoneme
 from nltk.corpus import wordnet
 import enchant
 import random
-import subprocess
 
 
 class wordnetAccess:
@@ -14,17 +14,12 @@ class wordnetAccess:
         self.wordOfTheDay = ''
         self.finalWord = ''
         self.suggetList = []
-        self.allLetters = ('a', 'b', 'c', 'd',
-                           'e', 'f', 'h', 'i',
-                           'j', 'k', 'l', 'm',
-                           'n', 'o', 'q', 'r',
-                           't', 'u', 'w', 'x',
-                           'y', 'z')
+        self.all_letters = tuple(l for l in string.ascii_lowercase)
         
         self.randomLetterlength = random.randrange(3, 8)
         
         for value in range(self.randomLetterlength):
-            self.wordOfTheDay = self.allLetters[random.randrange(0, 21)] + self.wordOfTheDay
+            self.wordOfTheDay = self.all_letters[random.randrange(0, 21)] + self.wordOfTheDay
             
         self.suggestList = self.myDict.suggest(self.wordOfTheDay)
         self.finalWord = self.suggestList[random.randrange(len(self.suggestList))]
@@ -33,7 +28,6 @@ class wordnetAccess:
         
     def nltkAccess(self, myWord):
         self.mainWord = myWord
-        #self.mainWord = "<span font='22' color='orange" + self.mainWord + "</span>"
         self.synsetsCurrentWord = wordnet.synsets(myWord)
         self.numberOfSenses = len(self.synsetsCurrentWord)
         self.allSences = [] 
@@ -70,11 +64,11 @@ class wordnetAccess:
                                    "Really hunge count of meanings available. "
         )
         
-        self.extendTalk = ("To access more details use 'more' option, because given this answers are more concise for some words. ",
-                           "This is too concise definition and meanings here, to access related words and more. Use 'more' option. ",
-                           "I can read the meanings of the words, if you like. Use speak buttons. ",
-                           "I can understand your sentences as much as possible, so you can chat somethings. I won't ever annoy you. ",
-                           "Difficult to do long arthmetic? Leave it to me, I can understand math expressions. ")
+        self.extendTalk = (
+            "To access more details use 'more' option, because given this answers are more concise for some words. ",
+            "This is too concise definition and meanings here, to access related words and more. Use 'more' option. ",
+            "I can read the meanings of the words, if you like. Use speak buttons. ",
+            "Difficult to do long arthmetic? Leave it to me, I can understand math expressions. ")
         position = random.randint(0, 3)
         if self.numberOfSenses > 1:
             self.sentenceString = self.responseTalkMany[position]
@@ -164,9 +158,7 @@ class wordnetAccess:
                 self.selectedExamples = self.selectedExamples[0:stopSlice]
             self.selectedExampleString = "<span font='18' color='#3ec1ec'><b>Example Sentences:</b></span>\n\n\t" + "\n\t".join(self.selectedExamples)
             self.allExampleString = "\n".join(self.allExamples)
-                
-                         
-        #subprocess.Popen(['espeak', '-s', '145', '-v', 'f5', self.everyDefinitionSpeechs[1]])
+
         hintPosition = random.randint(0, 4)
         sendListOne = "<span font='18' color='#3ec1ec'><b>" + self.sentenceString + self.extendTalk[hintPosition] + "</b></span>"
         sendListOne = sendListOne + "\n\n" + self.everyDefinitions[1] + "\n\n" + self.selectedExampleString
@@ -179,10 +171,7 @@ class wordnetAccess:
 
         return [sendListOne, sendListTwo, sendListThree, sendListFour, sendListFive, sendListSix, sendListSev], False
 
-
-    def randomWordInit(self):
-        returnData, check = self.nltkAccess(self.finalWord)
+    def random_word_init(self):
+        data, check = self.nltkAccess(self.finalWord)
         
-        return returnData, check
-
-        
+        return data

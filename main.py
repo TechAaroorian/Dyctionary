@@ -1,14 +1,17 @@
 # Dyctionary main file for User Interface
 import gi
+import subprocess
+import os
+import threading
+import time
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk
 from uiinit import UserInterfaceInit
-import subprocess, os, threading, time
 import Dyctionary_Modules.DyctionaryCSS as DyctionaryCSS
 import Dyctionary_Modules.Dy_UserEntryAnalyzer as Dy_UserEntryAnalyzer
 
 
-class Dy_UserInterface(UserInterfaceInit):
+class UserInterface(UserInterfaceInit):
     def __init__(self, ):
         UserInterfaceInit.__init__(self)
 
@@ -203,10 +206,10 @@ class Dy_UserInterface(UserInterfaceInit):
 
 
 def main():
-    DyUI = Dy_UserInterface()
-    DyUI.connect("delete-event", Gtk.main_quit)
-    DyUI.maximize()
-    DyUI.show_all()
+    ui_object = UserInterface()
+    ui_object.connect("delete-event", Gtk.main_quit)
+    ui_object.maximize()
+    ui_object.show_all()
     Gtk.main()
 
 

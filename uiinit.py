@@ -1,43 +1,34 @@
 #!/usr/bin/env python3
+import os
 from Dyctionary_Modules.Dy_WordNetAccess import wordnetAccess
-from gi.repository import Gtk, Gdk
-import os, subprocess
-import time
+from gi.repository import Gtk
 
 
 class UserInterfaceInit(Gtk.Window):
     def __init__(self, ):
         Gtk.Window.__init__(self, title="Dyctionary")
 
-        fixdataInit = []
-        check = None
+        fix_data_init = []
+        self.check_satisfied = True
 
-        self.checkStatisfied = True
-
-        while self.checkStatisfied:
+        while self.check_satisfied:
             try:
-                self.wrdntObject = wordnetAccess()
-                fixdataInit, check = self.wrdntObject.randomWordInit()
-                self.fixResult = fixdataInit
-                self.checkStatisfied = False
+                word_net_object = wordnetAccess()
 
-                if fixdataInit[3] == "No Source Found":
-                    self.checkStatisfied = True
+                fix_data_init = word_net_object.random_word_init()
+                self.check_satisfied = False
+
+                if fix_data_init[3] == "No Source Found":
+                    self.check_satisfied = True
             except Exception as e:
                 print(e)
 
-        self.Dy_ListenStart = True
-        self.Dy_ListenReady = False
-        self.Dy_SpeechRegInputPre = ""
-
-        self.Dy_UserQueryText = fixdataInit[3]
-        self.Dy_ResponseLargeText = fixdataInit[0]
-        self.Dy_ResponseSmallText = fixdataInit[1]
-        self.Dy_ResponseLargeSpeech = fixdataInit[2]
-        self.Dy_ResponseSmallSpeech = fixdataInit[3]
+        self.Dy_UserQueryText = fix_data_init[3]
+        self.Dy_ResponseLargeText = fix_data_init[0]
+        self.Dy_ResponseSmallText = fix_data_init[1]
+        self.Dy_ResponseLargeSpeech = fix_data_init[2]
+        self.Dy_ResponseSmallSpeech = fix_data_init[3]
         self.Dy_IconDir = os.path.join(os.getcwd(), 'Icons')
-        self.Dy_SpeechRegPath = os.path.join(
-            os.getcwd(), 'SpeechRecognition-Julius')
 
         self.set_icon_from_file(os.path.join(self.Dy_IconDir, "DyLogo.png"))
         self.set_default_size(1024, 720)
@@ -81,7 +72,6 @@ class UserInterfaceInit(Gtk.Window):
         self.Dy_ResponseLarge.set_selectable(True)
         self.Dy_ResponseLarge.set_line_wrap(True)
         self.Dy_ResponseLarge.set_max_width_chars(115)
-        # self.Dy_ResponseLarge.set_size_request(640, 480)
         self.Dy_ResponseLarge.set_name("Dy_ResponseLarge")
 
         self.Dy_MainWindowTitle = Gtk.Label()
