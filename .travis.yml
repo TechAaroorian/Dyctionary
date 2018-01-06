@@ -21,6 +21,6 @@ install:
   - sudo python3 -c "import nltk; nltk.download('wordnet')"
 
 script:
-  - sudo python3 main.py
+  - sudo python3 ./tests/travis_gi_check.py
 
 
