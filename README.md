@@ -1,6 +1,6 @@
 # Dyctionary
 
-##A simple english dictionary.
+## A simple english dictionary.
 
 install enchant \
 install nltk \
