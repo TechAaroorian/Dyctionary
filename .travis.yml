@@ -3,7 +3,7 @@ before_install:
   - sudo apt-get install enchant
   - sudo apt-get install espeak
   - sudo apt-get install python3-gi
-  - sudo apt-get isntall python3-gi-cairo
+  - sudo apt-get install python3-gi-cairo
   - sudo apt-get install python3-pip
 
 language: python
