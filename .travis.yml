@@ -8,6 +8,7 @@ before_install:
   - sudo apt-get install python3-gi
   - sudo apt-get install python3-gi-cairo
   - sudo apt-get install python3-pip
+  - sudo apt-get install gobject-introspection
 
 language: python
 python:
