@@ -42,16 +42,27 @@ class wordnetAccess:
         self.everyExamples = []
         self.allLemmaString = ''
         self.sentenceString = ''
-        self.responseTalkMany = ('There are ' + str(self.numberOfSenses) + " meanings for word '" + self.mainWord + "'. ",
-                                "I've found " + str(self.numberOfSenses) + " meanings for word '" + self.mainWord + "'. ",
-                                str(self.numberOfSenses) + " meanings picked for word '" + self.mainWord + "'. ",
-                                "'" + self.mainWord + "' has " + str(self.numberOfSenses) + " meanings. ",
+
+        self.responseTalkMany = (
+            "There are {} meanings for word '{}'. "
+            	.format(self.numberOfSenses, self.mainWord),
+            "I've found {} meanings for word '{}'. "
+            	.format(self.numberOfSenses, self.mainWord),
+            "{} meanings picked for word '{}'. "
+            	.format(self.numberOfSenses, self.mainWord),
+            "'{}' has {} meanings. "
+            	.format(self.numberOfSenses, self.mainWord)
         )
-        
-        self.responseTalkOne = ("There is only one meaning for word '" + self.mainWord + "'. ",
-                                "I've got one meaning for word '" + self.mainWord + "'. ",
-                                "Only one meaning for word '" + self.mainWord + "'. ",
-                                "Not many, only one meaning found for '" + self.mainWord + "'. "
+
+        self.responseTalkOne = (
+            "There is only one meaning for word '{}'. "
+            	.format(self.mainWord),
+            "I've got one meaning for word '{}'. "
+             	.format(self.mainWord),
+            "Only one meaning for word '{}'. "
+             	.format(self.mainWord),
+            "Not many, only one meaning found for '{}'. "
+            	.format(self.mainWord)
         )
         
         self.prettyTalkResponse = ("Seems, pretty much meanings available. ",
@@ -106,7 +117,7 @@ class wordnetAccess:
                     putRange = len(self.allSences)
                     
             for currentPosition in range(putRange):
-                self.allDefinitions = self.allDefinitions + "\t<span color='#bccbf4'>Meaning " + str(currentPosition + 1) + ")</span>   "
+                self.allDefinitions = self.allDefinitions + "\t<span color='#bccbf4'>" + str(currentPosition + 1) + ")</span>   "
                 self.allDefinitions = self.allDefinitions + wordnet.synset(self.allSences[currentPosition]).definition()
                 self.allDefinitions = self.allDefinitions + " <span color='orange'><b>(" + self.allSences[currentPosition].split(".")[1] + ")</b></span>\n"
                 self.allDefinitionSpeech = self.allDefinitionSpeech + "Meaning" + str(currentPosition + 1) + ", - ,"

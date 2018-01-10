@@ -2,6 +2,7 @@
 import os
 from Dyctionary_Modules.Dy_WordNetAccess import wordnetAccess
 from gi.repository import Gtk
+from gi.repository import Pango
 
 
 class UserInterfaceInit(Gtk.Window):
@@ -73,6 +74,9 @@ class UserInterfaceInit(Gtk.Window):
         self.Dy_ResponseLarge.set_max_width_chars(115)
         self.Dy_ResponseLarge.set_name("Dy_ResponseLarge")
 
+        font_for_response = Pango.FontDescription.from_string("Lobster 18")
+        self.Dy_UserQuery.modify_font(font_for_response)
+
         self.Dy_MainWindowTitle = Gtk.Label()
         self.Dy_MainWindowTitle.set_label("Dyctionary")
         self.Dy_MainWindowTitle.set_name("Dy_MainWindowTitle")
@@ -84,6 +88,7 @@ class UserInterfaceInit(Gtk.Window):
         self.Dy_ResponseSmall.set_max_width_chars(25)
         self.Dy_ResponseSmall.set_size_request(300, 100)
         self.Dy_ResponseSmall.set_name("Dy_ResponseSmall")
+        self.Dy_ResponseSmall.modify_font(font_for_response)
 
         self.Dy_UserEntry = Gtk.Entry()
         self.Dy_UserEntry.set_size_request(640, 30)
