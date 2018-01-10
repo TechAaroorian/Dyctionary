@@ -1,4 +1,4 @@
-# Dyctionary main file for User Interface
+#! /usr/bin/python3
 import gi
 import subprocess
 import os

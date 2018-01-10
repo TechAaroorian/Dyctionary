@@ -49,12 +49,11 @@ class UserInterfaceInit(Gtk.Window):
 
         self.Dy_TopLabelDummy = Gtk.Label()
 
-        self.separator_top_red = Gtk.HSeparator()
-        self.separator_top_red.set_name('separatortopred')
-
         self.separator_top = Gtk.Label()
         self.separator_bottom_icon_top = Gtk.Label()
         self.separator_bottom_icon_bottom = Gtk.Label()
+
+        separator_label_between_entry = Gtk.Label()
 
         self.bottom_label = Gtk.Label()
         self.bottom_label.set_name('bottomlabel')
@@ -153,12 +152,16 @@ class UserInterfaceInit(Gtk.Window):
         self.Dy_HBoxThree.pack_start(self.Dy_UserQuery, True, True, 0)
         self.Dy_HBoxThree.pack_start(self.Dy_ResponseSmall, True, True, 0)
 
+        vertical_box_wrap = Gtk.VBox(spacing=0)
+        vertical_box_wrap.pack_start(self.separator_top, True, True, 0)
+        vertical_box_wrap.pack_start(self.Dy_HBoxTwo, True, True, 0)
+        vertical_box_wrap.pack_start(self.separator_bottom_icon_top, True, True, 0)
+        vertical_box_wrap.pack_start(self.separator_bottom_icon_bottom, True, True, 0)
+        vertical_box_wrap.set_name("v_box_wrap")
+
         self.Dy_VBoxTwo.pack_start(self.Dy_HBoxThree, True, True, 0)
-        self.Dy_VBoxTwo.pack_start(self.separator_top_red, True, True, 0)
-        self.Dy_VBoxTwo.pack_start(self.separator_top, True, True, 0)
-        self.Dy_VBoxTwo.pack_start(self.Dy_HBoxTwo, True, True, 0)
-        self.Dy_VBoxTwo.pack_start(self.separator_bottom_icon_top, True, True, 0)
-        self.Dy_VBoxTwo.pack_start(self.separator_bottom_icon_bottom, True, True, 0)
+        self.Dy_VBoxTwo.pack_start(vertical_box_wrap, True, True, 0)
+        self.Dy_VBoxTwo.pack_start(separator_label_between_entry, True, True, 0)
         self.Dy_VBoxTwo.pack_start(self.Dy_UserEntry, True, True, 0)
         self.Dy_VBoxTwo.pack_start(self.Dy_HButtonBoxOne, True, True, 0)
 
