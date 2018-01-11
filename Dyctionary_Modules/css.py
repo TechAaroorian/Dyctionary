@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-DyctionaryCSS = b"""
+css = b"""
     #Dy_MainWindow{
         background: #011623;
         color: #b7ffff;

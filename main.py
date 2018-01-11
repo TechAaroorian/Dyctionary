@@ -4,11 +4,11 @@ import subprocess
 import os
 import threading
 import time
+from Dyctionary_Modules.css import css
+import Dyctionary_Modules.Dy_UserEntryAnalyzer as Dy_UserEntryAnalyzer
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk
 from uiinit import UserInterfaceInit
-import Dyctionary_Modules.DyctionaryCSS as DyctionaryCSS
-import Dyctionary_Modules.Dy_UserEntryAnalyzer as Dy_UserEntryAnalyzer
 
 
 class UserInterface(UserInterfaceInit):
@@ -17,7 +17,7 @@ class UserInterface(UserInterfaceInit):
 
         self.Dy_UserEntryAnalyzerObject = Dy_UserEntryAnalyzer.Dy_UserEntryAnalyzer()
 
-        self.Dy_MainCss = DyctionaryCSS.DyctionaryCSS
+        self.Dy_MainCss = css
         self.Dy_StyleProvider = Gtk.CssProvider()
         self.Dy_StyleProvider.load_from_data(self.Dy_MainCss)
         Gtk.StyleContext.add_provider_for_screen(
