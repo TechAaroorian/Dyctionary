@@ -1,4 +1,4 @@
-# Dyctionary  [![Build Status](https://travis-ci.org/Janarthanansr/Dyctionary.svg?branch=master)](https://travis-ci.org/Janarthanansr/Dyctionary)
+# Dyctionary  [![Build Status](https://travis-ci.org/TechAaroorian/Dyctionary.svg?branch=master)](https://travis-ci.org/TechAaroorian/Dyctionary)
 ![Dyctionary logo](./Icons/DyLogo.png)  
 
 ## A simple english dictionary.
